@@ -32,5 +32,5 @@
 具体的demo请查看sample,这里不详细说了。
 
 #联系方式
-###Email: paling[at]gmail.com
+###Email: palinty[at]gmail.com
 ###blog: [http://wiyi.org](http://wiyi.org)
