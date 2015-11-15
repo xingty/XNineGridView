@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ngl="http://schemas.android.com/apk/res-auto">
+    xmlns:ngv="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:layout_width="50dp"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_marginRight="20dp"
             android:paddingRight="50dp"
-            ngl:gap="2dp"/>
+            ngv:gap="2dp"/>
 
         <TextView
             android:layout_marginTop="8dp"

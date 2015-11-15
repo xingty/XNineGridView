@@ -27,7 +27,7 @@
 >     ngl:gap="2dp"/>
 
 不要忘了加上命名空间
->xmlns:ngl="http://schemas.android.com/apk/res-auto"
+>xmlns:ngv="http://schemas.android.com/apk/res-auto"
 
 具体的demo请查看sample,这里不详细说了。
 
