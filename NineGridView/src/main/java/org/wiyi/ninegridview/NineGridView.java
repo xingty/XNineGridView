@@ -49,6 +49,7 @@ public class NineGridView extends ViewGroup {
 
     public void setAdapter(NineGridAdapter adapter) {
         if (adapter == null) {
+            removeAllViews(); //避免listview复用显示脏数据
             return ;
         }
 
@@ -114,7 +115,7 @@ public class NineGridView extends ViewGroup {
             mChildWidth = availableWidth * 2 / 3 ;
             mChildHeight = mChildWidth;
         } else {
-            mChildWidth = (availableWidth - mSpace * (3 - 1)) / 3 ;
+            mChildWidth = (availableWidth - mSpace * (mColumns - 1)) / 3 ;
             mChildHeight = mChildWidth;
         }
 
