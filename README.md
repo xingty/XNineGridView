@@ -31,6 +31,13 @@
 
 具体的demo请查看sample,这里不详细说了。
 
+#版本日志
+####XNineGridView 1.0.1
+1. 删除了strings的app_name
+2. 删除了NineGridView下MainiFeast文件的Application标签
+3. 解决setAdapter为null时listview会显示脏数据的问题
+4. 解决一处导致计算单个childWidth出现小误差的问题
+
 #联系方式
 ###Email: palinty[at]gmail.com
 ###blog: [http://wiyi.org](http://wiyi.org)
