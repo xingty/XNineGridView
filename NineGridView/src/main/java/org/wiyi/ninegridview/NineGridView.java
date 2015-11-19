@@ -41,9 +41,15 @@ public class NineGridView extends ViewGroup {
         int defaultSpace = (int) getResources().getDimension(R.dimen.nine_grid_gap) ;
         if (attrs == null) {
             mSpace = defaultSpace ;
-        } else {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.NineGridView, 0, 0) ;
+            return ;
+        }
+
+        TypedArray a = null ;
+        try {
+            a = context.obtainStyledAttributes(attrs, R.styleable.NineGridView, 0, 0) ;
             mSpace = (int) a.getDimension(R.styleable.NineGridView_gap,0);
+        } finally {
+            a.recycle();
         }
     }
 
