@@ -3,4 +3,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_local">ImageActivity</string>
+    <string name="title_activity_normal">NormalActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

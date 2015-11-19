@@ -22,7 +22,10 @@
             android:name=".ImageActivity"
             android:label="@string/title_activity_local" >
         </activity>
-
+        <activity
+            android:name=".NormalActivity"
+            android:label="@string/title_activity_normal" >
+        </activity>
     </application>
 
 </manifest>

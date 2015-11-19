@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> titles = new ArrayList<>(2) ;
         titles.add("load image from drawable") ;
         titles.add("load image from url using picasso") ;
+        titles.add("normal") ;
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,titles) ;
         listview.setAdapter(adapter);
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
                     case 1 :
                         gotoImageActivity(1);
                         break ;
+
+                    case 2:
+                        gotoNormalActivity();
+                        break ;
                 }
             }
         });
@@ -53,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoImageActivity(int mode) {
         Intent intent = new Intent(this,ImageActivity.class) ;
-        intent.putExtra("mode",mode) ;
+        intent.putExtra("mode", mode) ;
+        startActivity(intent);
+    }
+
+    private void gotoNormalActivity() {
+        Intent intent = new Intent(this,NormalActivity.class) ;
         startActivity(intent);
     }
 }
