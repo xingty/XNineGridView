@@ -2,6 +2,7 @@ package org.wiyi.ninegridview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class NineGridView extends ViewGroup {
     }
 
     public void setAdapter(NineGridAdapter adapter) {
-        if (adapter == null) {
+        if (adapter == null || adapter.getCount() <= 0) {
             removeAllViews(); //避免listview复用显示脏数据
             return ;
         }
@@ -188,6 +189,12 @@ public class NineGridView extends ViewGroup {
 
     public int getSpace() {
         return mSpace ;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+
+        super.onDraw(canvas);
     }
 
     public interface NineGridAdapter<T> {
