@@ -12,6 +12,7 @@ import android.widget.ImageView;
  * Created by xing on 11/3/15.
  */
 public class NineGridView extends ViewGroup {
+    private static final String TAG = "NineGridView" ;
     private NineGridAdapter mAdapter ;
     private OnImageClickListener mListener ;
     /**
@@ -26,6 +27,7 @@ public class NineGridView extends ViewGroup {
      * child's space
      */
     private int mSpace ;
+    private int mChildMaxWidth ;
     private int mChildWidth;
     private int mChildHeight;
 
@@ -35,7 +37,7 @@ public class NineGridView extends ViewGroup {
 
     public NineGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView(context,attrs);
+        initView(context, attrs);
     }
 
     private void initView(Context context, AttributeSet attrs) {
@@ -111,13 +113,18 @@ public class NineGridView extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
         final int childCount = getChildCount() ;
         if (childCount <= 0) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             return ;
         }
-        
-        int width = MeasureSpec.getSize(widthMeasureSpec) ;
+
+        if ((mRows == 0 || mColumns == 0) && mAdapter == null) {
+            initMatrix(childCount);
+        }
+
+        final int minW = getPaddingLeft() + getPaddingRight() + getSuggestedMinimumWidth() ;
+        int width = resolveSizeAndState(minW,widthMeasureSpec,1) ;
         int availableWidth = width - getPaddingLeft() - getPaddingRight() ;
         if (childCount <= 1) {
             mChildWidth = availableWidth * 2 / 3 ;
@@ -126,13 +133,7 @@ public class NineGridView extends ViewGroup {
             mChildWidth = (availableWidth - mSpace * (mColumns - 1)) / 3 ;
             mChildHeight = mChildWidth;
         }
-
-        int mode = MeasureSpec.getMode(widthMeasureSpec) ;
         int height = mChildHeight * mRows + mSpace * (mRows - 1);
-        if (mode == MeasureSpec.UNSPECIFIED) {
-            width = mChildWidth * mColumns + mSpace * (mColumns - 1);
-            width += getPaddingLeft() + getPaddingRight() ;
-        }
 
         setMeasuredDimension(width, height + getPaddingTop() + getPaddingBottom());
     }
@@ -159,6 +160,7 @@ public class NineGridView extends ViewGroup {
             int bottom = top + mChildHeight;
 
             view.layout(left, top, right, bottom);
+
             final int position = i ;
             view.setOnClickListener(new OnClickListener() {
                 @Override
