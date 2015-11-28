@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> titles = new ArrayList<>(2) ;
         titles.add("load image from drawable") ;
         titles.add("load image from url using picasso") ;
-        titles.add("normal") ;
+        titles.add("custom layout") ;
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,titles) ;
         listview.setAdapter(adapter);
