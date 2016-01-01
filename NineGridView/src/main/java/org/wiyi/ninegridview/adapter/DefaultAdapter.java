@@ -32,13 +32,14 @@ public abstract class DefaultAdapter<T> implements NineGridView.NineGridAdapter{
 
     public ImageView generialDefaultImageView() {
         ImageView imageView = new ImageView(context) ;
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         ViewGroup.LayoutParams params = generialDefaultLayoutParams() ;
         imageView.setLayoutParams(params);
 
         return imageView ;
     }
 
-    private ViewGroup.LayoutParams generialDefaultLayoutParams() {
+    protected ViewGroup.LayoutParams generialDefaultLayoutParams() {
         return new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT) ;
     }

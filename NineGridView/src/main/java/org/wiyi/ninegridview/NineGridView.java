@@ -27,7 +27,6 @@ public class NineGridView extends ViewGroup {
      * child's space
      */
     private int mSpace ;
-    private int mChildMaxWidth ;
     private int mChildWidth;
     private int mChildHeight;
 
@@ -119,10 +118,6 @@ public class NineGridView extends ViewGroup {
             return ;
         }
 
-        if ((mRows == 0 || mColumns == 0) && mAdapter == null) {
-            initMatrix(childCount);
-        }
-
         final int minW = getPaddingLeft() + getPaddingRight() + getSuggestedMinimumWidth() ;
         int width = resolveSizeAndState(minW,widthMeasureSpec,1) ;
         int availableWidth = width - getPaddingLeft() - getPaddingRight() ;
@@ -178,7 +173,21 @@ public class NineGridView extends ViewGroup {
         if (!(child instanceof ImageView)) {
             throw new ClassCastException("addView(View child) NineGridView只能放ImageView") ;
         }
+
+        setChildLayoutParams(child);
         super.addView(child);
+    }
+
+    /**
+     * 给child view设置绝对大小,减少child view measure次数
+     * @param view
+     */
+    private void setChildLayoutParams(View view) {
+        ViewGroup.LayoutParams params = view.getLayoutParams() ;
+        if (params != null) {
+            params.width = mChildWidth ;
+            params.height = mChildHeight ;
+        }
     }
 
     public void setOnImageClickListener(OnImageClickListener listener) {
@@ -191,6 +200,14 @@ public class NineGridView extends ViewGroup {
 
     public int getSpace() {
         return mSpace ;
+    }
+
+    public int getChildWidth() {
+        return mChildWidth ;
+    }
+
+    public int getChildHeight() {
+        return mChildHeight ;
     }
 
     @Override

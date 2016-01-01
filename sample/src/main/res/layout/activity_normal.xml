@@ -3,33 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <org.wiyi.ninegridview.NineGridView
-        android:id="@+id/gallery"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        xgv:gap="5dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <org.wiyi.ninegridview.NineGridView
+            android:id="@+id/gallery"
             android:layout_height="wrap_content"
-            android:src="@drawable/sky1"
-            android:scaleType="centerCrop" />
+            android:layout_width="match_parent"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            xgv:gap="5dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/sky2"/>
+            <org.wiyi.sample.CustomImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sky1"
+                android:scaleType="centerCrop" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/sky3"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sky2"/>
 
-    </org.wiyi.ninegridview.NineGridView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sky3"/>
+
+        </org.wiyi.ninegridview.NineGridView>
+
+    </LinearLayout>
 
 </RelativeLayout>
