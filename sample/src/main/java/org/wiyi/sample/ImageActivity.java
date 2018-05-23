@@ -17,8 +17,7 @@ import java.util.Arrays;
 
 public class ImageActivity extends AppCompatActivity {
 
-    private FrameLayout flContent ;
-    private ListView listview ;
+    private ListView listview;
     private ArrayList<Moment> moments = new ArrayList<>(9) ;
     private Integer[] images = new Integer[]{
             R.drawable.sky1,

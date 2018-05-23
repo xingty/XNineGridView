@@ -161,7 +161,7 @@ public class NineGridView extends ViewGroup {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null) {
-                        mListener.onImageCilck(position,v);
+                        mListener.onImageClicked(position,v);
                     }
                 }
             });
@@ -223,7 +223,7 @@ public class NineGridView extends ViewGroup {
     }
 
     public interface OnImageClickListener {
-        void onImageCilck(int position, View view) ;
+        void onImageClicked(int position, View view) ;
     }
 }
 

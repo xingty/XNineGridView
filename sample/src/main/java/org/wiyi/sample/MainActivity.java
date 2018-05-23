@@ -24,14 +24,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        listview = (ListView) findViewById(R.id.listview);
+        listview = findViewById(R.id.listview);
     }
 
     private void initData() {
         ArrayList<String> titles = new ArrayList<>(2) ;
         titles.add("load image from drawable") ;
-        titles.add("load image from url using picasso") ;
-        titles.add("custom layout") ;
+        titles.add("load image from network") ;
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,titles) ;
         listview.setAdapter(adapter);
@@ -41,29 +40,20 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0 : {
-                        gotoImageActivity(0);
+                        toImageActivity(0);
                         break ;
                     }
                     case 1 :
-                        gotoImageActivity(1);
-                        break ;
-
-                    case 2:
-                        gotoNormalActivity();
+                        toImageActivity(1);
                         break ;
                 }
             }
         });
     }
 
-    private void gotoImageActivity(int mode) {
+    private void toImageActivity(int mode) {
         Intent intent = new Intent(this,ImageActivity.class) ;
         intent.putExtra("mode", mode) ;
-        startActivity(intent);
-    }
-
-    private void gotoNormalActivity() {
-        Intent intent = new Intent(this,NormalActivity.class) ;
         startActivity(intent);
     }
 }
