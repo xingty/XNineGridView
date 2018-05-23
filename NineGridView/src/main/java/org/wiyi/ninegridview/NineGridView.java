@@ -101,7 +101,7 @@ public class NineGridView extends ViewGroup {
             View child = adapter.getView(this,i,recycleView) ;
 
             if (child != recycleView) {
-                if (hasChild) { //为了防止有的逗比不复用RecycleView做处理
+                if (hasChild) {
                     removeView(recycleView);
                 }
 
@@ -161,7 +161,7 @@ public class NineGridView extends ViewGroup {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null) {
-                        mListener.onImageCilcked(position,v);
+                        mListener.onImageCilck(position,v);
                     }
                 }
             });
@@ -223,7 +223,7 @@ public class NineGridView extends ViewGroup {
     }
 
     public interface OnImageClickListener {
-        void onImageCilcked(int position, View view) ;
+        void onImageCilck(int position, View view) ;
     }
 }
 
