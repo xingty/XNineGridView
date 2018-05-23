@@ -98,7 +98,7 @@ public class NineGridView extends ViewGroup {
             boolean hasChild = i < childCount ;
             //简单的回收机制,主要是为ListView做优化
             View recycleView = hasChild ? getChildAt(i) : null ;
-            View child = adapter.getView(i,recycleView) ;
+            View child = adapter.getView(this,i,recycleView) ;
 
             if (child != recycleView) {
                 if (hasChild) { //为了防止有的逗比不复用RecycleView做处理
@@ -219,7 +219,7 @@ public class NineGridView extends ViewGroup {
     public interface NineGridAdapter<T> {
         int getCount() ;
         T getItem(int position) ;
-        View getView(int positon,View recycleView) ;
+        View getView(ViewGroup parent,int position,View recycleView) ;
     }
 
     public interface OnImageClickListener {

@@ -6,19 +6,14 @@ import android.widget.ImageView;
 
 import org.wiyi.ninegridview.NineGridView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by xing on 11/13/15.
  */
 public abstract class DefaultAdapter<T> implements NineGridView.NineGridAdapter{
-    protected List<T> data ;
-    protected Context context ;
-
-    public DefaultAdapter(Context context, List<T> t) {
-        this.context = context ;
-        this.data = t ;
-    }
+    protected List<T> data = new ArrayList<>();
 
     @Override
     public int getCount() {
@@ -30,17 +25,21 @@ public abstract class DefaultAdapter<T> implements NineGridView.NineGridAdapter{
         return data.get(position);
     }
 
-    public ImageView generialDefaultImageView() {
+    public ImageView getDefaultImageView(Context context) {
         ImageView imageView = new ImageView(context) ;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ViewGroup.LayoutParams params = generialDefaultLayoutParams() ;
+        ViewGroup.LayoutParams params = getDefaultLayoutParams() ;
         imageView.setLayoutParams(params);
 
         return imageView ;
     }
 
-    protected ViewGroup.LayoutParams generialDefaultLayoutParams() {
+    private ViewGroup.LayoutParams getDefaultLayoutParams() {
         return new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT) ;
+    }
+
+    public List<T> getDataList() {
+        return data;
     }
 }

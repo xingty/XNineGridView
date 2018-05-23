@@ -72,7 +72,7 @@ public class ImageActivity extends AppCompatActivity {
             moments.add(moment) ;
         }
 
-        listview = (ListView) findViewById(R.id.listview);
+        listview = findViewById(R.id.listview);
         listview.setAdapter(new MyAdapter());
     }
 
@@ -101,18 +101,20 @@ public class ImageActivity extends AppCompatActivity {
             if (convertView == null) {
                 convertView = LayoutInflater.from(ImageActivity.this).inflate(R.layout.view_list_item, null) ;
                 holder = new ViewHolder() ;
-                holder.content = (TextView) convertView.findViewById(R.id.tvContent);
-                holder.gallery = (NineGridView) convertView.findViewById(R.id.gallery);
+                holder.content = convertView.findViewById(R.id.tvContent);
+                holder.gallery = convertView.findViewById(R.id.gallery);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
 
             if (mode == 0) {
-                ImageAdapter adapter = new ImageAdapter(ImageActivity.this, Arrays.asList(moment.resource)) ;
+                ImageAdapter adapter = new ImageAdapter();
+                adapter.getDataList().addAll(Arrays.asList(moment.resource));
                 holder.gallery.setAdapter(adapter);
             } else {
-                NetworkImageAdapter adapter = new NetworkImageAdapter(ImageActivity.this,Arrays.asList(moment.address));
+                NetworkImageAdapter adapter = new NetworkImageAdapter();
+                adapter.getDataList().addAll(Arrays.asList(moment.address));
                 holder.gallery.setAdapter(adapter);
             }
 
